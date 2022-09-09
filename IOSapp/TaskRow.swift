@@ -13,7 +13,12 @@ struct TaskRow: View {
         HStack {
             Text(task.name)
                 .strikethrough(!task.active)
-                .foregroundColor( task.active ? .black : .gray)
+                .foregroundColor( task.active ? Color(UIColor.label) : Color(UIColor.secondaryLabel))
+            Spacer()
+            Text(task.deadline, format: .dateTime.day().month().year().hour().minute())
+                .strikethrough(!task.active)
+                .foregroundColor( task.active ? Color(UIColor.label) : Color(UIColor.secondaryLabel))
+                .frame(alignment: .trailing)
         }
     }
 }

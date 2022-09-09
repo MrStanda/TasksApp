@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		20B35E2F28C87DA100232E6A /* IOSappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E2E28C87DA100232E6A /* IOSappApp.swift */; };
-		20B35E3128C87DA100232E6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3028C87DA100232E6A /* ContentView.swift */; };
 		20B35E3328C87DA300232E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B35E3228C87DA300232E6A /* Assets.xcassets */; };
 		20B35E3628C87DA300232E6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B35E3528C87DA300232E6A /* Preview Assets.xcassets */; };
-		20B35E3D28C87F3300232E6A /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3C28C87F3300232E6A /* TaskListViewModel.swift */; };
+		20B35E3D28C87F3300232E6A /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3C28C87F3300232E6A /* TaskStore.swift */; };
 		20B35E3F28C8817000232E6A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3E28C8817000232E6A /* TaskRow.swift */; };
 		20B35E4128C8841500232E6A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4028C8841500232E6A /* Task.swift */; };
 		20B35E4628C88E0E00232E6A /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4528C88E0E00232E6A /* TaskDetail.swift */; };
@@ -21,10 +20,9 @@
 /* Begin PBXFileReference section */
 		20B35E2B28C87DA100232E6A /* IOSapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B35E2E28C87DA100232E6A /* IOSappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSappApp.swift; sourceTree = "<group>"; };
-		20B35E3028C87DA100232E6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		20B35E3228C87DA300232E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20B35E3528C87DA300232E6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		20B35E3C28C87F3300232E6A /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		20B35E3C28C87F3300232E6A /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		20B35E3E28C8817000232E6A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		20B35E4028C8841500232E6A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		20B35E4528C88E0E00232E6A /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
@@ -62,10 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				20B35E2E28C87DA100232E6A /* IOSappApp.swift */,
-				20B35E3028C87DA100232E6A /* ContentView.swift */,
 				20B35E3228C87DA300232E6A /* Assets.xcassets */,
 				20B35E3428C87DA300232E6A /* Preview Content */,
-				20B35E3C28C87F3300232E6A /* TaskListViewModel.swift */,
+				20B35E3C28C87F3300232E6A /* TaskStore.swift */,
 				20B35E3E28C8817000232E6A /* TaskRow.swift */,
 				20B35E4028C8841500232E6A /* Task.swift */,
 				20B35E4528C88E0E00232E6A /* TaskDetail.swift */,
@@ -152,10 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B35E3128C87DA100232E6A /* ContentView.swift in Sources */,
 				20B35E2F28C87DA100232E6A /* IOSappApp.swift in Sources */,
 				20B35E4128C8841500232E6A /* Task.swift in Sources */,
-				20B35E3D28C87F3300232E6A /* TaskListViewModel.swift in Sources */,
+				20B35E3D28C87F3300232E6A /* TaskStore.swift in Sources */,
 				20B35E3F28C8817000232E6A /* TaskRow.swift in Sources */,
 				20B35E4628C88E0E00232E6A /* TaskDetail.swift in Sources */,
 				20B35E4828C89FC600232E6A /* TaskListView.swift in Sources */,

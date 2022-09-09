@@ -8,10 +8,11 @@
 import Foundation
 
 
-struct Task: Hashable, Codable {
+struct Task: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
     var active: Bool
+    var deadline: Date
 }
 
 

@@ -10,12 +10,15 @@ import SwiftUI
 
 
 struct TaskListView: View {
-    @State private var newTaskName = ""
+    @Binding var tasks: [Task]
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showSheet = false
-    @ObservedObject var viewModel = TaskListViewModel()
+    @State private var inputTaskName = ""
+    @State private var deadline = Date.now
+    let saveAction: ()->Void
     var body: some View {
         NavigationView {
-            List(viewModel.tasks, id: \.id) { task in
+            List(tasks, id: \.id) { task in
                 NavigationLink {
                     TaskDetail(task: task)
                 } label: {
@@ -23,62 +26,84 @@ struct TaskListView: View {
                 }
                 .swipeActions {
                     Button("Delete") {
-                        
+                        tasks = TaskStore.deleteTask(id: task.id, tasks: tasks)
                     }
                     .tint(.red)
-                    Button("Done") {
-                        
+                    if task.active {
+                        Button("Done") {
+                            tasks = TaskStore.changeTaskState(id: task.id, state: false, tasks: tasks)
+                        }
+                        .tint(.green)
+                    } else {
+                        Button("Not done") {
+                            tasks = TaskStore.changeTaskState(id: task.id, state: true, tasks: tasks)
+                        }
+                        .tint(.orange)
                     }
-                    .tint(.green)
                 }
             }
             .navigationTitle("Tasks")
-            .navigationBarItems(trailing:
-                HStack {
-                Button(action: {
-                    showSheet = true
-                }){
-                    Image(systemName: "plus")
-                }
-            })
-        }
-        .sheet(isPresented: $showSheet, content: {
-            VStack {
-                Spacer()
-                    .frame(height: 15)
-                HStack {
-                    Button(action: {
-                        showSheet = false
-                    }, label: {
-                        Image(systemName: "xmark.circle")                    })
-                    .frame(maxHeight: .infinity, alignment: .topLeading)
-                    .padding(.leading)
-                    .font(.system(size: 22.0))
-                    Spacer()
-                    Text("Add new task")
-                        .frame(maxHeight: .infinity, alignment: .top)
-                    Spacer()
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading, content: {
                     Button(action: {
                         
                     }, label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "info.circle")
                     })
-                    .frame(maxHeight: .infinity, alignment: .topTrailing)
-                    .padding(.trailing, 10)
-                    .font(.system(size: 22.0))
+                    .font(.system(size: 17.0))
+                })
+                ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                    Button(action: {
+                        showSheet = true
+                        deadline = Date.now
+                        //viewModel.addFakeTasks()
+                    }){
+                        Image(systemName: "plus.circle")
+                    }
+                })
+            }
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { saveAction() }
+        }
+        .sheet(isPresented: $showSheet, content: {
+            NavigationView {
+                VStack {
+                    Form {
+                        TextField("Task name",
+                                  text: $inputTaskName
+                        )
+                        DatePicker("Deadline date", selection: $deadline, displayedComponents: .date)
+                        DatePicker("Deadline time", selection: $deadline, displayedComponents: .hourAndMinute)
+                    }
+                    .background(.white)
+                    .frame(alignment: .top)
                 }
-                TextField("Task name",
-                          text: $newTaskName
-                )
-                .frame(alignment: .top)
-                .textFieldStyle(.roundedBorder)
+                .navigationBarTitle("Add new task", displayMode: .inline)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarLeading, content: {
+                        Button(action: {
+                            showSheet = false
+                        }, label: {
+                            Image(systemName: "xmark.circle")
+                        })
+                        .font(.system(size: 17.0))
+                    })
+                    ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                        Button(action: {
+                                if inputTaskName != "" {
+                                    tasks.append(TaskStore.addTask(name: inputTaskName, deadline: deadline, tasks: tasks))
+                                    inputTaskName = ""
+                                    showSheet = false
+
+                                }
+                            }, label: {
+                            Image(systemName: "plus.circle")
+                        })
+                        .font(.system(size: 17.0))
+                    })
+                }
             }
         })
-    }
-}
-
-struct TaskListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskListView()
     }
 }

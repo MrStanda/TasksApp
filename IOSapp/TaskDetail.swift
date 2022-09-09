@@ -8,35 +8,28 @@
 import SwiftUI
 
 struct TaskDetail: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var removalAlert = false
     var task: Task
     var body: some View {
-        ScrollView {
-            VStack {
+        List {
+            Section(header: Text("Name")) {
                 Text(task.name)
                     .font(.title)
-                Divider()
-                Text("Deadline")
-                Button(action: {
-                    removalAlert = true
-                }, label: {
-                    Image(systemName: "trash")
-                })
+            }
+            Section(header: Text("Deadline")) {
+                Text(task.deadline.formatted())
+                    .foregroundColor(.red)
+                    .frame(alignment: .bottom)
             }
         }
-        .alert("Do you really want to remove this task?", isPresented: $removalAlert) {
+        .navigationBarTitle("Task Detail", displayMode: .inline)
+        .toolbar {
             Button(action: {
                 
             }, label: {
-                Text("Close")
+                Image(systemName: "square.and.pencil")
             })
-            Button(action: {
-                
-            }, label: {
-                Text("Remove")
-            })
-
-            
         }
     }
 }
