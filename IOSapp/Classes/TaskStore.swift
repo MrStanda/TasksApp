@@ -76,4 +76,12 @@ class TaskStore: ObservableObject {
         _tasks[index!].active = state
         return _tasks
     }
+    static func changeTaskData(tasks: [Task], id: Int, name: String, deadline: Date, active: Bool) -> [Task] {
+        var _tasks = tasks
+        let index = _tasks.firstIndex(where: {$0.id == id})
+        _tasks[index!].name = name
+        _tasks[index!].deadline = deadline
+        _tasks[index!].active = active
+        return _tasks
+    }
 }

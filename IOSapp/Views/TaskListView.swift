@@ -20,7 +20,7 @@ struct TaskListView: View {
         NavigationView {
             List(tasks, id: \.id) { task in
                 NavigationLink {
-                    TaskDetail(task: task)
+                    TaskDetailView(tasks: $tasks, task: task)
                 } label: {
                     TaskRow(task: task)
                 }
@@ -31,12 +31,12 @@ struct TaskListView: View {
                     .tint(.red)
                     if task.active {
                         Button("Done") {
-                            tasks = TaskStore.changeTaskState(id: task.id, state: false, tasks: tasks)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, active: false)
                         }
                         .tint(.green)
                     } else {
                         Button("Not done") {
-                            tasks = TaskStore.changeTaskState(id: task.id, state: true, tasks: tasks)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, active: true)
                         }
                         .tint(.orange)
                     }
@@ -70,11 +70,14 @@ struct TaskListView: View {
             NavigationView {
                 VStack {
                     Form {
-                        TextField("Task name",
-                                  text: $inputTaskName
-                        )
-                        DatePicker("Deadline date", selection: $deadline, displayedComponents: .date)
-                        DatePicker("Deadline time", selection: $deadline, displayedComponents: .hourAndMinute)
+                        Section(header: Text("Name")) {
+                            TextEditor(text: $inputTaskName)
+                            .font(.title)
+                        }
+                        Section(header: Text("Deadline")) {
+                            DatePicker("Deadline date", selection: $deadline, displayedComponents: .date)
+                            DatePicker("Deadline time", selection: $deadline, displayedComponents: .hourAndMinute)
+                        }
                     }
                     .background(.white)
                     .frame(alignment: .top)
