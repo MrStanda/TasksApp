@@ -1,5 +1,5 @@
 //
-//  TaskDetail.swift
+//  TaskDetailView.swift
 //  IOSapp
 //
 //  Created by Aleš Stanislav on 07.09.2022.
@@ -14,17 +14,19 @@ struct TaskDetailView: View {
     @State private var editedTaskName = ""
     @State private var editedDeadline = Date.now
     @State private var editedActiveState = true
+    @State private var editedPriority = false
     @Binding var tasks: [Task]
+    @State private var calendar = Calendar.current
     var task: Task
     var body: some View {
         List {
             Section(header: Text("Name")) {
                 Text(task.name)
-                    .font(.title)
+                    //.font(.title)
             }
             Section(header: Text("Deadline")) {
                 Text(task.deadline.formatted())
-                    .foregroundColor(.red)
+                    .foregroundColor(calendar.dateComponents([.hour], from: Date.now, to: task.deadline).hour! < 24 ? .red : Color(UIColor.label))
                     .frame(alignment: .bottom)
             }
         }
@@ -42,13 +44,16 @@ struct TaskDetailView: View {
                     Form {
                         Section(header: Text("Name")) {
                             TextEditor(text: $editedTaskName)
-                            .font(.title)
+                                .disableAutocorrection(true)
                         }
                         Section(header: Text("Deadline")) {
                             DatePicker("Deadline date", selection: $editedDeadline, displayedComponents: .date)
                             DatePicker("Deadline time", selection: $editedDeadline, displayedComponents: .hourAndMinute)
                         }
                         Section(header: Text("Status")) {
+                            Toggle(isOn: $editedPriority, label: {
+                                Text("Liked")
+                            })
                             Toggle(isOn: $editedActiveState, label: {
                                 Text("Task Status")
                             })
@@ -64,6 +69,7 @@ struct TaskDetailView: View {
                             editedDeadline = task.deadline
                             editedTaskName = task.name
                             editedActiveState = task.active
+                            editedPriority = task.priority!
                             showEditSheet = false
                         }, label: {
                             Image(systemName: "xmark.circle")
@@ -72,7 +78,7 @@ struct TaskDetailView: View {
                     })
                     ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                         Button(action: {
-                                tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: editedTaskName, deadline: editedDeadline, active: editedActiveState)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: editedTaskName, deadline: editedDeadline, priority: editedPriority, active: editedActiveState)
                                 showEditSheet = false
                             }, label: {
                             Image(systemName: "square.and.arrow.down")
@@ -86,6 +92,7 @@ struct TaskDetailView: View {
             editedDeadline = task.deadline
             editedTaskName = task.name
             editedActiveState = task.active
+            editedPriority = task.priority ?? false
         })
         
     }

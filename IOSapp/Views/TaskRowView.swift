@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskRow: View {
+    var calendar = Calendar.current
     var task: Task
     var body: some View {
         HStack {
@@ -17,7 +18,7 @@ struct TaskRow: View {
             Spacer()
             Text(task.deadline, format: .dateTime.day().month().year().hour().minute())
                 .strikethrough(!task.active)
-                .foregroundColor( task.active ? Color(UIColor.label) : Color(UIColor.secondaryLabel))
+                .foregroundColor( task.active ? calendar.dateComponents([.hour], from: Date.now, to: task.deadline).hour! < 24 ? .red : Color(UIColor.label) : Color(UIColor.secondaryLabel))
                 .frame(alignment: .trailing)
         }
     }

@@ -9,7 +9,24 @@ import SwiftUI
 
 struct AboutView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Section(header: Text("Author"),
+                content: {
+                HStack {
+                    
+                    Spacer()
+                    Link("Aleš Stanislav", destination: URL(string: "https://mrstanda.xyz")!)
+                }
+            })
+            Section(header: Text("Version"), content: {
+                HStack {
+                    Text("App version")
+                    Spacer()
+                    Text("1.0.0")
+                }
+            })
+        }
+        .navigationBarTitle("About App", displayMode: .inline)
     }
 }
 

@@ -7,26 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200C348228CB6E560091A823 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C348128CB6E560091A823 /* AboutView.swift */; };
 		20B35E2F28C87DA100232E6A /* IOSappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E2E28C87DA100232E6A /* IOSappApp.swift */; };
 		20B35E3328C87DA300232E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B35E3228C87DA300232E6A /* Assets.xcassets */; };
 		20B35E3628C87DA300232E6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B35E3528C87DA300232E6A /* Preview Assets.xcassets */; };
 		20B35E3D28C87F3300232E6A /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3C28C87F3300232E6A /* TaskStore.swift */; };
-		20B35E3F28C8817000232E6A /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3E28C8817000232E6A /* TaskRow.swift */; };
+		20B35E3F28C8817000232E6A /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E3E28C8817000232E6A /* TaskRowView.swift */; };
 		20B35E4128C8841500232E6A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4028C8841500232E6A /* Task.swift */; };
-		20B35E4628C88E0E00232E6A /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4528C88E0E00232E6A /* TaskDetail.swift */; };
+		20B35E4628C88E0E00232E6A /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4528C88E0E00232E6A /* TaskDetailView.swift */; };
 		20B35E4828C89FC600232E6A /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B35E4728C89FC600232E6A /* TaskListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		20B35E2B28C87DA100232E6A /* IOSapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200C348128CB6E560091A823 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		20B35E2B28C87DA100232E6A /* TasksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B35E2E28C87DA100232E6A /* IOSappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSappApp.swift; sourceTree = "<group>"; };
 		20B35E3228C87DA300232E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20B35E3528C87DA300232E6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		20B35E3C28C87F3300232E6A /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
-		20B35E3E28C8817000232E6A /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		20B35E3E28C8817000232E6A /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		20B35E4028C8841500232E6A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		20B35E4528C88E0E00232E6A /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
+		20B35E4528C88E0E00232E6A /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		20B35E4728C89FC600232E6A /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		20F1883928CE2A2400AB120F /* IOSapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IOSapp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +43,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		200C348328CB6EA90091A823 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20B35E3E28C8817000232E6A /* TaskRowView.swift */,
+				20B35E4528C88E0E00232E6A /* TaskDetailView.swift */,
+				20B35E4728C89FC600232E6A /* TaskListView.swift */,
+				200C348128CB6E560091A823 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		200C348428CB6F0E0091A823 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				20B35E3C28C87F3300232E6A /* TaskStore.swift */,
+				20B35E4028C8841500232E6A /* Task.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		20B35E2228C87DA100232E6A = {
 			isa = PBXGroup;
 			children = (
@@ -51,7 +74,7 @@
 		20B35E2C28C87DA100232E6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				20B35E2B28C87DA100232E6A /* IOSapp.app */,
+				20B35E2B28C87DA100232E6A /* TasksApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,14 +82,12 @@
 		20B35E2D28C87DA100232E6A /* IOSapp */ = {
 			isa = PBXGroup;
 			children = (
+				20F1883928CE2A2400AB120F /* IOSapp.entitlements */,
 				20B35E2E28C87DA100232E6A /* IOSappApp.swift */,
+				200C348328CB6EA90091A823 /* Views */,
+				200C348428CB6F0E0091A823 /* Classes */,
 				20B35E3228C87DA300232E6A /* Assets.xcassets */,
 				20B35E3428C87DA300232E6A /* Preview Content */,
-				20B35E3C28C87F3300232E6A /* TaskStore.swift */,
-				20B35E3E28C8817000232E6A /* TaskRow.swift */,
-				20B35E4028C8841500232E6A /* Task.swift */,
-				20B35E4528C88E0E00232E6A /* TaskDetail.swift */,
-				20B35E4728C89FC600232E6A /* TaskListView.swift */,
 			);
 			path = IOSapp;
 			sourceTree = "<group>";
@@ -96,7 +117,7 @@
 			);
 			name = IOSapp;
 			productName = IOSapp;
-			productReference = 20B35E2B28C87DA100232E6A /* IOSapp.app */;
+			productReference = 20B35E2B28C87DA100232E6A /* TasksApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 20B35E2628C87DA100232E6A /* Build configuration list for PBXProject "IOSapp" */;
+			buildConfigurationList = 20B35E2628C87DA100232E6A /* Build configuration list for PBXProject "TasksApp" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -150,10 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20B35E2F28C87DA100232E6A /* IOSappApp.swift in Sources */,
+				200C348228CB6E560091A823 /* AboutView.swift in Sources */,
 				20B35E4128C8841500232E6A /* Task.swift in Sources */,
 				20B35E3D28C87F3300232E6A /* TaskStore.swift in Sources */,
-				20B35E3F28C8817000232E6A /* TaskRow.swift in Sources */,
-				20B35E4628C88E0E00232E6A /* TaskDetail.swift in Sources */,
+				20B35E3F28C8817000232E6A /* TaskRowView.swift in Sources */,
+				20B35E4628C88E0E00232E6A /* TaskDetailView.swift in Sources */,
 				20B35E4828C89FC600232E6A /* TaskListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,23 +302,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = IOSapp/IOSapp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IOSapp/Preview Content\"";
+				DEVELOPMENT_TEAM = T59GSG5X2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.mrstanda.IOSapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.mrstanda.TasksApp;
+				PRODUCT_NAME = TasksApp;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -308,23 +337,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = IOSapp/IOSapp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IOSapp/Preview Content\"";
+				DEVELOPMENT_TEAM = T59GSG5X2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.mrstanda.IOSapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.mrstanda.TasksApp;
+				PRODUCT_NAME = TasksApp;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -334,7 +370,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20B35E2628C87DA100232E6A /* Build configuration list for PBXProject "IOSapp" */ = {
+		20B35E2628C87DA100232E6A /* Build configuration list for PBXProject "TasksApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20B35E3728C87DA300232E6A /* Debug */,

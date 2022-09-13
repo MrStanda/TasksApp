@@ -62,7 +62,21 @@ class TaskStore: ObservableObject {
         } else {
             lastId = -1
         }
-        return Task(id: lastId + 1, name: name, active: true, deadline: deadline)
+        return Task(id: lastId + 1, name: name, active: true, priority: false, deadline: deadline)
+    }
+    static func addFakeTasks(numOfFakeTasks: Int, tasks: [Task]) -> [Task] {
+        let taskCount = tasks.count
+        var lastId: Int
+        var _tasks = tasks
+        if taskCount > 0 {
+            lastId = tasks[taskCount - 1].id
+        } else {
+            lastId = 0
+        }
+        for i in lastId...numOfFakeTasks {
+            _tasks.append(addTask(name: "Task" + String(i), deadline: Date.now, tasks: tasks))
+        }
+        return _tasks
     }
     static func deleteTask(id: Int, tasks: [Task]) -> [Task] {
         var _tasks = tasks
@@ -70,18 +84,18 @@ class TaskStore: ObservableObject {
         _tasks.remove(at: index!)
         return _tasks
     }
-    static func changeTaskState(id: Int, state: Bool, tasks: [Task]) -> [Task] {
-        var _tasks = tasks
-        let index = _tasks.firstIndex(where: {$0.id == id})
-        _tasks[index!].active = state
-        return _tasks
-    }
-    static func changeTaskData(tasks: [Task], id: Int, name: String, deadline: Date, active: Bool) -> [Task] {
+    static func changeTaskData(tasks: [Task], id: Int, name: String, deadline: Date, priority: Bool?, active: Bool) -> [Task] {
         var _tasks = tasks
         let index = _tasks.firstIndex(where: {$0.id == id})
         _tasks[index!].name = name
         _tasks[index!].deadline = deadline
         _tasks[index!].active = active
+        _tasks[index!].priority = priority
+        self.save(tasks: _tasks) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
         return _tasks
     }
 }
