@@ -55,8 +55,8 @@
 				20B35E4728C89FC600232E6A /* TaskListView.swift */,
 				206710E028D1BE5F005AC230 /* TaskListCategoryView.swift */,
 				20B35E3E28C8817000232E6A /* TaskRowView.swift */,
-				206710E228D1C1CE005AC230 /* TaskCreationView.swift */,
 				20B35E4528C88E0E00232E6A /* TaskDetailView.swift */,
+				206710E228D1C1CE005AC230 /* TaskCreationView.swift */,
 				206710E428D1C6C4005AC230 /* TaskEditView.swift */,
 				200C348128CB6E560091A823 /* AboutView.swift */,
 			);

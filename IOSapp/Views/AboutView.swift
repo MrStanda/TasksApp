@@ -29,9 +29,3 @@ struct AboutView: View {
         .navigationBarTitle("About App", displayMode: .inline)
     }
 }
-
-struct AboutView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutView()
-    }
-}
