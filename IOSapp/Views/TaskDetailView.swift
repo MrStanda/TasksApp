@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct TaskDetailView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var showEditSheet = false
-    @State private var removalAlert = false
-    @State private var editedTaskName = ""
-    @State private var editedDeadline = Date.now
-    @State private var editedActiveState = true
-    @State private var editedPriority = false
     @Binding var tasks: [Task]
+    @State private var showEditSheet = false
     @State private var calendar = Calendar.current
     var task: Task
     var body: some View {
         List {
             Section(header: Text("Name")) {
                 Text(task.name)
-                    //.font(.title)
             }
             Section(header: Text("Deadline")) {
                 Text(task.deadline.formatted())
@@ -39,61 +32,7 @@ struct TaskDetailView: View {
             })
         }
         .sheet(isPresented: $showEditSheet, content: {
-            NavigationView {
-                VStack {
-                    Form {
-                        Section(header: Text("Name")) {
-                            TextEditor(text: $editedTaskName)
-                                .disableAutocorrection(true)
-                        }
-                        Section(header: Text("Deadline")) {
-                            DatePicker("Deadline date", selection: $editedDeadline, displayedComponents: .date)
-                            DatePicker("Deadline time", selection: $editedDeadline, displayedComponents: .hourAndMinute)
-                        }
-                        Section(header: Text("Status")) {
-                            Toggle(isOn: $editedPriority, label: {
-                                Text("Liked")
-                            })
-                            Toggle(isOn: $editedActiveState, label: {
-                                Text("Task Status")
-                            })
-                        }
-                    }
-                    .background(.white)
-                    .frame(alignment: .top)
-                }
-                .navigationBarTitle("Edit Task", displayMode: .inline)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarLeading, content: {
-                        Button(action: {
-                            editedDeadline = task.deadline
-                            editedTaskName = task.name
-                            editedActiveState = task.active
-                            editedPriority = task.priority!
-                            showEditSheet = false
-                        }, label: {
-                            Image(systemName: "xmark.circle")
-                        })
-                        .font(.system(size: 17.0))
-                    })
-                    ToolbarItemGroup(placement: .navigationBarTrailing, content: {
-                        Button(action: {
-                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: editedTaskName, deadline: editedDeadline, priority: editedPriority, active: editedActiveState)
-                                showEditSheet = false
-                            }, label: {
-                            Image(systemName: "square.and.arrow.down")
-                        })
-                        .font(.system(size: 17.0))
-                    })
-                }
-            }
+            TaskEditView(tasks: $tasks, showEditSheet: $showEditSheet, editedTaskName: task.name, editedDeadline: task.deadline, editedPriority: task.priority ?? false, editedActiveState: task.active, id: task.id)
         })
-        .onAppear(perform: {
-            editedDeadline = task.deadline
-            editedTaskName = task.name
-            editedActiveState = task.active
-            editedPriority = task.priority ?? false
-        })
-        
     }
 }
