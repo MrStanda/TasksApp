@@ -14,6 +14,7 @@ struct Task: Hashable, Codable, Identifiable {
     var active: Bool
     var priority: Bool?
     var deadline: Date
+    var images: [TaskImage]
 }
 
 

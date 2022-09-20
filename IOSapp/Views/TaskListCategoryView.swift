@@ -24,25 +24,25 @@ struct TaskListCategoryView: View {
                     .tint(.red)
                     if task.active {
                         Button("Done") {
-                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: task.priority, active: false)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: task.priority, active: false, images: task.images)
                         }
                         .tint(.green)
                     } else {
                         Button("Not done") {
-                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: task.priority, active: true)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: task.priority, active: true, images: task.images)
                         }
                         .tint(.orange)
                     }
                     if task.priority != true {
                         Button(action: {
-                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: true, active: task.active)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: true, active: task.active, images: task.images)
                         }, label: {
                             Image(systemName: "star")
                         })
                         .tint(.yellow)
                     } else {
                         Button(action: {
-                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: false, active: task.active)
+                            tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: task.name, deadline: task.deadline, priority: false, active: task.active, images: task.images)
                         }, label: {
                             Image(systemName: "star.slash")
                         })

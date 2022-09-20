@@ -14,7 +14,7 @@ struct TaskEditView: View {
     @State var editedDeadline: Date
     @State var editedPriority: Bool
     @State var editedActiveState: Bool
-    var id: Int
+    var task: Task
     var body: some View {
         NavigationView {
             VStack {
@@ -51,10 +51,10 @@ struct TaskEditView: View {
                 })
                 ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                     Button(action: {
-                        tasks = TaskStore.changeTaskData(tasks: tasks, id: id, name: editedTaskName, deadline: editedDeadline, priority: editedPriority, active: editedActiveState)
+                        tasks = TaskStore.changeTaskData(tasks: tasks, id: task.id, name: editedTaskName, deadline: editedDeadline, priority: editedPriority, active: editedActiveState, images: task.images)
                             showEditSheet = false
                         }, label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Image(systemName: "square.and.pencil")
                     })
                     .font(.system(size: 17.0))
                 })

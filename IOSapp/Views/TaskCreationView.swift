@@ -41,7 +41,7 @@ struct TaskCreationView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                     Button(action: {
                             if inputTaskName != "" {
-                                tasks.append(TaskStore.addTask(name: inputTaskName, deadline: deadline, tasks: tasks))
+                                tasks = TaskStore.addTask(name: inputTaskName, deadline: deadline, tasks: tasks)
                                 inputTaskName = ""
                                 showSheet = false
 
