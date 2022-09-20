@@ -54,15 +54,22 @@ class TaskStore: ObservableObject {
             }
         }
     }
-    static func addTask(name: String, deadline: Date, tasks: [Task]) -> Task{
-        let taskCount = tasks.count
+    static func addTask(name: String, deadline: Date, tasks: [Task]) -> [Task]{
+        var _tasks = tasks
+        let taskCount = _tasks.count
         var lastId: Int
         if taskCount > 0 {
-            lastId = tasks[taskCount - 1].id
+            lastId = _tasks[taskCount - 1].id
         } else {
             lastId = -1
         }
-        return Task(id: lastId + 1, name: name, active: true, priority: false, deadline: deadline)
+        _tasks.append(Task(id: lastId + 1, name: name, active: true, priority: false, deadline: deadline, images: []))
+        self.save(tasks: _tasks) { result in
+            if case .failure(let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
+        return _tasks
     }
     static func addFakeTasks(numOfFakeTasks: Int, tasks: [Task]) -> [Task] {
         let taskCount = tasks.count
@@ -74,8 +81,9 @@ class TaskStore: ObservableObject {
             lastId = 0
         }
         for i in lastId...numOfFakeTasks {
-            _tasks.append(addTask(name: "Task" + String(i), deadline: Date.now, tasks: tasks))
+            _tasks = addTask(name: "Task" + String(i), deadline: Date.now, tasks: tasks)
         }
+        
         return _tasks
     }
     static func deleteTask(id: Int, tasks: [Task]) -> [Task] {
@@ -84,13 +92,14 @@ class TaskStore: ObservableObject {
         _tasks.remove(at: index!)
         return _tasks
     }
-    static func changeTaskData(tasks: [Task], id: Int, name: String, deadline: Date, priority: Bool?, active: Bool) -> [Task] {
+    static func changeTaskData(tasks: [Task], id: Int, name: String, deadline: Date, priority: Bool?, active: Bool, images: [TaskImage]) -> [Task] {
         var _tasks = tasks
         let index = _tasks.firstIndex(where: {$0.id == id})
         _tasks[index!].name = name
         _tasks[index!].deadline = deadline
         _tasks[index!].active = active
         _tasks[index!].priority = priority
+        _tasks[index!].images = images
         self.save(tasks: _tasks) { result in
             if case .failure(let error) = result {
                 fatalError(error.localizedDescription)
