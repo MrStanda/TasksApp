@@ -17,6 +17,13 @@ struct TaskDetailView: View {
             Section(header: Text("Name")) {
                 Text(task.name)
             }
+            Section(header: Text("Images")) {
+                NavigationLink {
+                    TaskDetailImagesView(images: task.images, tasks: $tasks, task: task)
+                } label: {
+                    Text("Show Images")
+                }
+            }
             Section(header: Text("Deadline")) {
                 Text(task.deadline.formatted())
                     .foregroundColor(calendar.dateComponents([.hour], from: Date.now, to: task.deadline).hour! < 24 ? .red : Color(UIColor.label))
